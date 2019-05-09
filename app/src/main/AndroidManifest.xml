@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:dist="http://schemas.android.com/apk/distribution"
-          package="com.syntax.belanjayuk">
+          xmlns:tools="http://schemas.android.com/tools" package="com.syntax.belanjayuk">
 
     <dist:module dist:instant="true"/>
 
@@ -11,12 +11,15 @@
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme" tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".ui.edit_alamat.EditAlamat">
         </activity>
         <activity android:name=".ui.edit_akun.EditAkun">
         </activity>
-        <activity android:name=".ui.login.Login">
+        <activity android:name=".ui.login.Login"
+        android:theme="@style/AppTheme.NoActionBar">
+
+
         </activity>
         <activity android:name=".ui.order_confirmation.OrderConfirmation">
         </activity>
@@ -26,19 +29,26 @@
         </activity>
         <activity android:name=".ui.product_detail.ProductDetail">
         </activity>
-        <activity android:name=".ui.register.Register">
-        </activity>
-        <activity android:name=".ui.splash_screen.SplashScreen">
-        </activity>
-        <activity
-                android:name=".MainActivity"
-                android:label="@string/app_name"
-                android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".ui.register.Register"
+        android:theme="@style/AppTheme.NoActionBar">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+
+
+        </activity>
+        <activity android:name=".ui.splash_screen.SplashScreen"
+        android:theme="@style/AppTheme.NoActionBar"
+        android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+                android:name=".MainActivity"
+                android:label="@string/app_name"
+                android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
 

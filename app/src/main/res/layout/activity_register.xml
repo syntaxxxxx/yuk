@@ -1,10 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+
+<ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.register.Register">
+        android:background="@color/colorPrimary"
+        android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linear"
+            android:orientation="vertical"
+            tools:context=".ui.register.Register">
+
+        <TextView
+                android:text="@string/register_here"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <LinearLayout
+                android:id="@+id/loginForm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="vertical"
+                android:padding="20dp"
+                tools:ignore="ObsoleteLayoutParam,UselessParent">
+
+            <EditText
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@android:color/white"
+                    android:id="@+id/edt_first_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/auth_et_vertical_margin"
+                    android:drawablePadding="5dp"
+                    android:hint="@string/first_name"
+                    android:paddingHorizontal="@dimen/auth_et_horizontal_padding"
+                    android:paddingVertical="@dimen/auth_et_vertical_padding"
+                    android:textSize="@dimen/et_text_size"
+                    tools:ignore="Autofill,UnusedAttribute"
+                    android:inputType="textAutoComplete"/>
+
+            <EditText
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@android:color/white"
+                    android:id="@+id/edt_last_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/auth_et_vertical_margin"
+                    android:drawablePadding="5dp"
+                    android:hint="@string/last_name"
+                    android:inputType="textAutoComplete"
+                    android:paddingHorizontal="@dimen/auth_et_horizontal_padding"
+                    android:paddingVertical="@dimen/auth_et_vertical_padding"
+                    android:textSize="@dimen/et_text_size"
+                    tools:ignore="UnusedAttribute"/>
+
+            <EditText
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@android:color/white"
+                    android:inputType="textEmailAddress"
+                    android:id="@+id/edt_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/auth_et_vertical_margin"
+                    android:drawablePadding="5dp"
+                    android:hint="@string/email"
+                    android:paddingHorizontal="@dimen/auth_et_horizontal_padding"
+                    android:paddingVertical="@dimen/auth_et_vertical_padding"
+                    android:textSize="@dimen/et_text_size" tools:ignore="UnusedAttribute"/>
+
+            <EditText
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@android:color/white"
+                    android:id="@+id/edt_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/auth_et_vertical_margin"
+                    android:drawablePadding="5dp"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:paddingHorizontal="@dimen/auth_et_horizontal_padding"
+                    android:paddingVertical="@dimen/auth_et_vertical_padding"
+                    android:textSize="@dimen/et_text_size" tools:ignore="UnusedAttribute"/>
+
+            <EditText
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@android:color/white"
+                    android:id="@+id/edt_confirm_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/auth_et_vertical_margin"
+                    android:drawablePadding="5dp"
+                    android:hint="@string/confirm_password"
+                    android:inputType="textPassword"
+                    android:paddingHorizontal="@dimen/auth_et_horizontal_padding"
+                    android:paddingVertical="@dimen/auth_et_vertical_padding"
+                    android:textSize="@dimen/et_text_size" tools:ignore="UnusedAttribute"/>
+
+            <Button
+                    android:id="@+id/btn_sign_up"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/auth_et_vertical_margin"
+                    android:elevation="0dp"
+                    android:text="@string/sign_up"
+                    android:clickable="true"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp" tools:ignore="UnusedAttribute" android:focusable="true"/>
+
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/spacing_middle"
+                    tools:ignore="ObsoleteLayoutParam,UnusedAttribute">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/already_have_an_account_yet"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"/>
+
+                <TextView
+                        android:id="@+id/tv_sign_in"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:text="@string/sign_in"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

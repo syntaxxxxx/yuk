@@ -5,8 +5,7 @@
                 android:background="@color/drawerHeaderColor"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:fitsSystemWindows="false"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark">
+                android:fitsSystemWindows="false">
 
     <ImageView
             android:layout_width="100dp"

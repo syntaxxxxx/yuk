@@ -1,6 +1,5 @@
 package com.syntax.belanjayuk
 
-import android.app.Activity
 import android.os.Bundle
 
 import android.support.v4.view.GravityCompat
