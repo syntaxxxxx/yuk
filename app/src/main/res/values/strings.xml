@@ -42,5 +42,13 @@
     <string name="login_here">Login Here</string>
     <string name="remember_me">Remember Me</string>
     <string name="don_t_have_account">Don\'t have account ?</string>
+    <string name="empty_data">Data tidak ada</string>
+    <string name="coba_lagi_ya">Coba lagi ya</string>
+    <string name="tambahkan_ke_keranjang">tambahkan ke keranjang</string>
+    <string name="list_categories">List Categories</string>
+    <string name="barang_ada">Barang Ada</string>
+    <string name="tanggal">Tanggal</string>
+    <string name="nama_category">Nama Category</string>
+    <string name="nama_detail_category">Nama Detail Category</string>
 
 </resources>
