@@ -18,9 +18,13 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            buildConfigField 'String', "BASE_URL", "\"http://10.120.2.73:8000/api/\""
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField 'String', "BASE_URL", "\"http://10.120.2.73:8000/api/\""
         }
     }
 
@@ -52,11 +56,12 @@ dependencies {
     // 4
     implementation 'de.hdodenhof:circleimageview:3.0.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
-    implementation 'com.github.piasy:GlideImageLoader:1.5.7'
+//    implementation 'com.github.piasy:GlideImageLoader:1.5.7'
     implementation 'com.daimajia.slider:library:1.1.5@aar'
 
     // 5
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+    implementation 'org.glassfish:javax.annotation:10.0-b28'
 }

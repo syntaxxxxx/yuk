@@ -1,4 +1,6 @@
 package com.syntax.belanjayuk.base
 
-interface BasePresenter {
+interface BasePresenter<in T : BaseView> {
+    fun onAttach(view: T)
+    fun onDettach()
 }
