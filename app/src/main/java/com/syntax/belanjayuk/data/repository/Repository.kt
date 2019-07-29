@@ -1,7 +1,7 @@
-package com.syntax.belanjayuk.repository
+package com.syntax.belanjayuk.data.repository
 
-import com.syntax.belanjayuk.model.login.ResponseLogin
-import com.syntax.belanjayuk.model.register.ResponseRegister
+import com.syntax.belanjayuk.data.model.login.ResponseLogin
+import com.syntax.belanjayuk.data.model.register.ResponseRegister
 import retrofit2.Call
 
 interface Repository {

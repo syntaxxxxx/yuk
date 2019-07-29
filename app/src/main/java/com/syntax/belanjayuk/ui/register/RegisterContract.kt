@@ -5,25 +5,14 @@ import com.syntax.belanjayuk.base.BaseView
 interface RegisterContract {
 
     interface Presenter {
-
-        fun onFirstNameChanged(firstName: String)
-        fun onLastNameChanged(lastName: String)
-        fun onEmailChanged(email: String)
-        fun onPasswordChanged(password: String)
-        fun onPasswordConfirmChanged(confirmPassword: String)
-        fun onRegister()
+        fun doRegister(firstName: String, lastName: String, email: String, password: String, confPassword: String)
 
     }
 
     interface View : BaseView {
-
-        fun showFirstNameEror()
-        fun showLastNameError()
-        fun showEmailError()
-        fun showPasswordError()
-        fun showConfirmPasswordError()
-        fun showRegisterSuccess()
-        fun showRegisterError(message: String)
-
+        fun isEmptyField()
+        fun isNotSamePassword()
+        fun isSuccess(msg : String)
+        fun onShowError(msg : String)
     }
 }

@@ -1,10 +1,9 @@
 package com.syntax.belanjayuk.ui.register
 
+import android.util.Log
 import com.syntax.belanjayuk.base.BasePresenter
-import com.syntax.belanjayuk.model.Inputan
-import com.syntax.belanjayuk.model.register.ResponseRegister
-import com.syntax.belanjayuk.repository.Injection
-import com.syntax.belanjayuk.utils.*
+import com.syntax.belanjayuk.data.model.register.ResponseRegister
+import com.syntax.belanjayuk.data.repository.Injection
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -13,7 +12,6 @@ class RegisterPresenter(private var regisView: RegisterContract.View?) : BasePre
     RegisterContract.Presenter {
 
     private val repository = Injection.provideRepository()
-    private val modelInput = Inputan()
 
     override fun onAttach(view: RegisterContract.View) {
         regisView = view
@@ -23,58 +21,44 @@ class RegisterPresenter(private var regisView: RegisterContract.View?) : BasePre
         regisView = null
     }
 
-    override fun onFirstNameChanged(firstName: String) {
-        modelInput.firstName = firstName
-        if (!isFirstNameValid(firstName)) {
-            regisView?.showFirstNameEror()
-        }
-    }
+    override fun doRegister(
+        firstName: String,
+        lastName: String,
+        email: String,
+        password: String,
+        confPassword: String
+    ) {
 
-    override fun onLastNameChanged(lastName: String) {
-        modelInput.lastName = lastName
-        if (!isLastNameValid(lastName)) {
-            regisView?.showLastNameError()
-        }
-    }
+        if (firstName.isEmpty() || lastName.isEmpty() ||
+            email.isEmpty() || password.isEmpty() || confPassword.isEmpty()
+        ) {
+            regisView?.isEmptyField()
 
-    override fun onEmailChanged(email: String) {
-        modelInput.email = email
-        if (!isEmailValid(email)) {
-            regisView?.showEmailError()
-        }
-    }
+        } else if (password != confPassword) {
+            regisView?.isNotSamePassword()
 
-    override fun onPasswordChanged(password: String) {
-        modelInput.password = password
-        if (!isPasswordValid(password)) {
-            regisView?.showPasswordError()
-        }
-    }
-
-    override fun onPasswordConfirmChanged(confirmPassword: String) {
-        modelInput.confirmPassword = confirmPassword
-        if (!isConfirmPassword(modelInput.password, confirmPassword)) {
-            regisView?.showConfirmPasswordError()
-        }
-    }
-
-    override fun onRegister() {
-        if (modelInput.isValid()) {
-
-            val (firstName, lastName, email, password) = modelInput
-
+        } else {
             repository.register(firstName, lastName, email, password).enqueue(object : Callback<ResponseRegister> {
-
                 override fun onResponse(call: Call<ResponseRegister>?, response: Response<ResponseRegister>?) {
                     if (response != null && response.isSuccessful) {
-                        val dataRegister = response.body()?.data
+                        val success = response.body()?.isSuccess
+                        val msg = response.body()?.message
+
+                        if (success == true) {
+                            val dataRegister = response.body()?.data
+                            Log.d("TAG", dataRegister.toString())
+                            regisView?.isSuccess(msg!!)
+                        } else{
+                            regisView?.onShowError(msg!!)
+                        }
+
                     } else {
-                        regisView?.showRegisterError(response?.body()?.message.toString())
+                        regisView?.onShowError(response?.errorBody().toString())
                     }
                 }
 
                 override fun onFailure(call: Call<ResponseRegister>?, t: Throwable?) {
-                    regisView?.showRegisterError("Connection to ${t?.message} failure")
+                    regisView?.onShowError("Connection to ${t?.message} failure")
                 }
             })
         }

@@ -1,10 +1,16 @@
-package com.syntax.belanjayuk.repository
+package com.syntax.belanjayuk.data.repository
 
 import com.syntax.belanjayuk.BuildConfig
+import com.syntax.belanjayuk.data.model.login.ResponseLogin
+import com.syntax.belanjayuk.data.model.register.ResponseRegister
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
+import retrofit2.http.POST
 import java.util.concurrent.TimeUnit
 
 object Injection {
@@ -40,4 +46,22 @@ object Injection {
 
     fun provideBelanjaApi(): BelanjaApi = provideRetrofit().create(BelanjaApi::class.java)
 
+    interface BelanjaApi {
+
+        @FormUrlEncoded
+        @POST("register")
+        fun register(
+            @Field("first_name") firstName: String,
+            @Field("last_name") lastName: String,
+            @Field("email") email: String,
+            @Field("password") password: String
+        ): Call<ResponseRegister>
+
+        @FormUrlEncoded
+        @POST("login")
+        fun login(
+            @Field("email") email: String,
+            @Field("password") password: String
+        ): Call<ResponseLogin>
+    }
 }
