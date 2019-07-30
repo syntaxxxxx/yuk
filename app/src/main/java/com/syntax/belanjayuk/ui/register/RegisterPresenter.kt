@@ -48,7 +48,7 @@ class RegisterPresenter(private var regisView: RegisterContract.View?) : BasePre
                             val dataRegister = response.body()?.data
                             Log.d("TAG", dataRegister.toString())
                             regisView?.isSuccess(msg!!)
-                        } else{
+                        } else {
                             regisView?.onShowError(msg!!)
                         }
 
@@ -57,8 +57,8 @@ class RegisterPresenter(private var regisView: RegisterContract.View?) : BasePre
                     }
                 }
 
-                override fun onFailure(call: Call<ResponseRegister>?, t: Throwable?) {
-                    regisView?.onShowError("Connection to ${t?.message} failure")
+                override fun onFailure(call: Call<ResponseRegister>?, e: Throwable?) {
+                    regisView?.onShowError("Connection to ${e?.message} failure")
                 }
             })
         }
