@@ -9,6 +9,7 @@ import com.syntax.belanjayuk.ui.register.Register
 import com.syntax.belanjayuk.utils.SessionManager
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
 
 class Login : AppCompatActivity(), LoginContract.View {
 
@@ -54,6 +55,7 @@ class Login : AppCompatActivity(), LoginContract.View {
     }
 
     override fun onShowError(msg: String) {
+        toast(msg)
     }
 
     override fun onAttachView() {

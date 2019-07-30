@@ -6,6 +6,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
+        android:background="@color/colorPrimary"
         tools:context=".ui.splash_screen.SplashScreen">
 
     <TextView
@@ -13,14 +14,8 @@
             android:text="@string/belanja_yuk"
             android:textSize="25sp"
             android:textStyle="bold"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@android:color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-
-    <ImageView
-            android:scaleType="fitXY"
-            android:src="@drawable/intro_img_3"
-            android:layout_width="220dp"
-            android:layout_height="270dp"/>
 
 </LinearLayout>
