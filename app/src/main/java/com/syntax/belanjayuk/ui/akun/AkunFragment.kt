@@ -13,7 +13,9 @@ import com.syntax.belanjayuk.R
  * A simple [Fragment] subclass.
  *
  */
-class AkunFragment : Fragment() {
+class AkunFragment : Fragment(), AkunContract.View {
+
+    private lateinit var presenter: AkunPresenter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,5 +25,20 @@ class AkunFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_akun_fragmeny, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initPresenter()
+    }
 
+    private fun initPresenter() {
+        presenter = AkunPresenter()
+    }
+
+    override fun onAttachView() {
+        presenter.onAttach(this)
+    }
+
+    override fun onDettachView() {
+        presenter.onDettach()
+    }
 }

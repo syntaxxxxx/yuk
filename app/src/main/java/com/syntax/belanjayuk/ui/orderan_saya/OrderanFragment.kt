@@ -13,7 +13,9 @@ import com.syntax.belanjayuk.R
  * A simple [Fragment] subclass.
  *
  */
-class OrderanFragment : Fragment() {
+class OrderanFragment : Fragment(), OrderanContract.View {
+
+    private lateinit var presenter: OrderanPresenter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,5 +25,30 @@ class OrderanFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_orderan, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initPresenter()
+    }
 
+    private fun initPresenter() {
+        presenter = OrderanPresenter()
+    }
+
+    override fun onAttachView() {
+        presenter.onAttach(this)
+    }
+
+    override fun onDettachView() {
+        presenter.onDettach()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        onAttachView()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        onDettachView()
+    }
 }
